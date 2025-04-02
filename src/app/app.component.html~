@@ -1,0 +1,115 @@
+<div id="container">
+  <div class="dualbrand">
+    <img src="/rhjb_eap_logo.png" width="300" height="175"/>
+  </div>
+  <div id="content">
+    <h1>Welcome to JBoss!</h1>
+
+    <div>
+      <p>You have successfully deployed a Jakarta EE Enterprise
+        Application.</p>
+    </div>
+
+    <form id="reg" (ngSubmit)="onSubmit()">
+      <h2>Member Registration</h2>
+      <p>Enforces annotation-based constraints defined on the model class.</p>
+      <table>
+        <tbody>
+        <tr>
+          <td class="titleCell">
+            <label for="name">Name:</label>
+          </td>
+          <td>
+            <input type="text" name="name" value [(ngModel)]="member.name">
+          </td>
+          <td><span *ngIf="memberForm.get('name')?.invalid && memberForm.get('name')?.touched" class="invalid">Name is required.</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="titleCell">
+            <label for="email">Email:</label>
+          </td>
+          <td>
+            <input type="text" name="email" value [(ngModel)]="member.email">
+          </td>
+          <td><span *ngIf="memberForm.get('email')?.invalid && memberForm.get('email')?.touched" class="invalid">
+      Email is required.
+    </span></td>
+        </tr>
+        <tr>
+          <td class="titleCell">
+            <label for="email">Phone #</label>
+          </td>
+          <td>
+            <input type="text" name="phoneNumber" value [(ngModel)]="member.phoneNumber">
+          </td>
+          <td>  <span *ngIf="memberForm.get('phoneNumber')?.invalid && memberForm.get('phoneNumber')?.touched"
+                      class="invalid">
+      Phone number is required.
+    </span></td>
+        </tr>
+        </tbody>
+      </table>
+      <p></p>
+      <table>
+        <tbody>
+        <tr>
+          <td>
+            <input id="register" type="submit" name="register" value="Register" class="register">
+          </td>
+          <td>[(ngModel)] = "message"</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p></p>
+      <input hidden="hidden" type="hidden" value="">
+    </form>
+    <h2>Members</h2>
+
+    <table id="table" class="simpletablestyle">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone #</th>
+        <th scope="col">REST URL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members" class="header">
+        <td>{{member.id}}</td>
+        <td>{{member.name}}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.phoneNumber}}</td>
+        <td><a href="http://localhost:8080/rest/members/{{member.id}}">/rest/members/{{member.id}}</a>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5">
+          REST URL for all members:<a href="http://localhost:8080/rest/members"> /rest/members</a>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div id="aside">
+    <p>Learn more about Red Hat JBoss Enterprise Application Platform.</p>
+    <ul>
+      <li><a href="https://access.redhat.com/documentation/en/red-hat-jboss-enterprise-application-platform/">Documentation</a>
+      </li>
+      <li><a href="http://www.redhat.com/en/technologies/jboss-middleware/application-platform">Product Information</a>
+      </li>
+    </ul>
+  </div>
+  <div id="footer">
+    <p>
+      This project was generated from a Maven archetype from
+      JBoss.<br/>
+    </p>
+  </div>
+</div>
+
